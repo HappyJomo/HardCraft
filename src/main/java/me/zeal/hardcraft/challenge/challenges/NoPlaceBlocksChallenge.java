@@ -1,5 +1,7 @@
-package me.zeal.hardcraft.challenges;
+package me.zeal.hardcraft.challenge.challenges;
 
+import me.zeal.hardcraft.challenge.Challenge;
+import me.zeal.hardcraft.challenge.Challenges;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockPlaceEvent;
 
@@ -7,7 +9,6 @@ public class NoPlaceBlocksChallenge extends Challenge {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        // ChallengeManager challengeManager = ChallengeManager.getChallengeManager();
         if (!isThisChallengeActive(event.getPlayer())) {
             return;
         }
@@ -19,9 +20,8 @@ public class NoPlaceBlocksChallenge extends Challenge {
         return Challenges.NO_PLACE_BLOCKS;
     }
 
-    /*@Override
-    protected boolean isThisChallenge() {
-        ChallengeManager challengeManager = ChallengeManager.getChallengeManager();
-        return challengeManager.getActiveChallenge() != null && challengeManager.getActiveChallenge() instanceof NoPlaceBlocksChallenge;
-    }*/
+    @Override
+    public int getDuration() {
+        return 90;
+    }
 }
