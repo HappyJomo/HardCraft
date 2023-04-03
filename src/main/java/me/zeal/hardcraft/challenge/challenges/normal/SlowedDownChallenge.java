@@ -1,4 +1,4 @@
-package me.zeal.hardcraft.challenge.challenges;
+package me.zeal.hardcraft.challenge.challenges.normal;
 
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
@@ -13,7 +13,8 @@ public class SlowedDownChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, getDuration() * 20, 3));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, getDuration() * 20, 3, false, false));
+        super.startChallenge(player);
     }
 
     @Override
@@ -23,6 +24,6 @@ public class SlowedDownChallenge extends Challenge {
 
     @Override
     public int getDuration() {
-        return 40;
+        return 90;
     }
 }

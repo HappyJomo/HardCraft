@@ -23,4 +23,8 @@ public abstract class Challenge implements Listener {
      */
     public void startChallenge(Player player) {
     }
+
+    public void stopChallenge(Player player) {
+
+    }
 }

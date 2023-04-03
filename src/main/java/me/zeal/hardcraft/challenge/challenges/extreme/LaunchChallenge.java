@@ -1,15 +1,17 @@
-package me.zeal.hardcraft.challenge.challenges;
+package me.zeal.hardcraft.challenge.challenges.extreme;
 
 import me.zeal.hardcraft.HardCraft;
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
-public class ShuffleInventoryChallenge extends Challenge {
+public class LaunchChallenge extends Challenge {
 
     private final Map<UUID, Integer> tasks = new HashMap<>();
 
@@ -18,24 +20,20 @@ public class ShuffleInventoryChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
-
         int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(HardCraft.getPlugin(), () -> {
             if (!isThisChallengeActive(player)) {
                 Bukkit.getScheduler().cancelTask(tasks.get(player.getUniqueId()));
                 return;
             }
-
-            ItemStack[] playerInv = player.getInventory().getContents();
-            Collections.shuffle(Arrays.asList(playerInv));
-            player.getInventory().setContents(playerInv);
-        }, 0, 5 * 20);
-
+        player.setVelocity(new Vector(0, 20, 0));
+        }, 0, 20 * 20);
+        super.startChallenge(player);
         tasks.put(player.getUniqueId(), taskId);
     }
 
     @Override
     public Challenges getEnum() {
-        return Challenges.SHUFFLE_INVENTORY;
+        return Challenges.LAUNCH;
     }
 
     @Override

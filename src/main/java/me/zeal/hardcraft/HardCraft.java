@@ -1,17 +1,27 @@
 package me.zeal.hardcraft;
 
+import me.zeal.hardcraft.commands.StartChallengesCommand;
+import me.zeal.hardcraft.commands.StopChallengesCommand;
+import me.zeal.hardcraft.commands.TestChallengeCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HardCraft extends JavaPlugin {
-    // TODO
-    // Make random bad stuff happen every 2 minutes or so. For example move slower, can't place blocks for x seconds, can't break blocks...
+    // TODO: Scoreboard showing active challenge and remaining time.
+    // TODO: Make easier challenges more likely to occur and the other way around.
+    // TODO: Add extra field on the Challenges enums to show difficulty.
 
     private static Plugin plugin;
 
     @Override
     public void onEnable() {
         plugin = this;
+
+        Bukkit.getPluginCommand("startchallenges").setExecutor(new StartChallengesCommand());
+        Bukkit.getPluginCommand("stopchallenges").setExecutor(new StopChallengesCommand());
+        Bukkit.getPluginCommand("testchallenge").setExecutor(new TestChallengeCommand());
+
     }
 
     public static Plugin getPlugin() {

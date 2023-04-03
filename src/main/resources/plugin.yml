@@ -1,0 +1,13 @@
+name: HardCraft
+main: me.zeal.hardcraft.HardCraft
+version: 1.0
+commands:
+  StartChallenges:
+    usage: /startchallenges
+    description: Start the HardCraft challenges!
+  StopChallenges:
+    usage: /stopchallenges
+    description: Stop the HardCraft challenges!
+  TestChallenge:
+    usage: /testchallenge
+    description: Test a specific challenge.

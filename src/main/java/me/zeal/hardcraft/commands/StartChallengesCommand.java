@@ -30,7 +30,7 @@ public class StartChallengesCommand implements CommandExecutor {
             player.sendMessage(ChatColor.GREEN + "The challenges are now in action. Watch your step!");
             challengeManager.setTimerId(Bukkit.getScheduler().scheduleSyncRepeatingTask(HardCraft.getPlugin(), () -> {
                 ChallengeManager.getChallengeManager().assignNewChallenges();
-            }, 120 * 20, 120 * 20)); // every 2 minutes
+            }, /*120 * 20*/ 5, /*120 * 20*/ 20 * 20)); // every 2 minutes
         }
         return true;
     }

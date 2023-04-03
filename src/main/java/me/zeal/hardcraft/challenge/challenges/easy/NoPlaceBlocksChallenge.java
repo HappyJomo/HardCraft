@@ -1,15 +1,15 @@
-package me.zeal.hardcraft.challenge.challenges;
+package me.zeal.hardcraft.challenge.challenges.easy;
 
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
-public class NoBreakBlocksChallenge extends Challenge {
+public class NoPlaceBlocksChallenge extends Challenge {
 
     @EventHandler
-    public void onNoBreakBlocks(BlockBreakEvent event) {
-        if(!isThisChallengeActive(event.getPlayer())) {
+    public void onBlockPlace(BlockPlaceEvent event) {
+        if (!isThisChallengeActive(event.getPlayer())) {
             return;
         }
         event.setCancelled(true);
@@ -17,11 +17,11 @@ public class NoBreakBlocksChallenge extends Challenge {
 
     @Override
     public Challenges getEnum() {
-        return Challenges.NO_BREAK_BLOCKS;
+        return Challenges.NO_PLACE_BLOCKS;
     }
 
     @Override
     public int getDuration() {
-        return 60;
+        return 90;
     }
 }

@@ -29,6 +29,10 @@ public class StopChallengesCommand implements CommandExecutor {
         Bukkit.getScheduler().cancelTask(challengeManager.getTimerId());
         player.sendMessage("ok we stop");
 
+        for (Player pl : Bukkit.getOnlinePlayers()) {
+
+        }
+
         return true;
     }
 }

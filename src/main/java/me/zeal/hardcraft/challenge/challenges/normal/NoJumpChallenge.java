@@ -1,4 +1,4 @@
-package me.zeal.hardcraft.challenge.challenges;
+package me.zeal.hardcraft.challenge.challenges.normal;
 
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
@@ -23,6 +23,6 @@ public class NoJumpChallenge extends Challenge {
 
     @Override
     public int getDuration() {
-        return 40;
+        return 90;
     }
 }
