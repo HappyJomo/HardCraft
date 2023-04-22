@@ -44,11 +44,18 @@ public class MoonGravityChallenge extends Challenge {
 
     @EventHandler
     public void onFallDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player)) {
+            return;
+        }
+
         Player player = (Player) event.getEntity();
         if (!isThisChallengeActive(player)) {
             return;
         }
 
+        if (event.getCause() != EntityDamageEvent.DamageCause.FALL) {
+            return;
+        }
         event.setCancelled(true);
     }
 
