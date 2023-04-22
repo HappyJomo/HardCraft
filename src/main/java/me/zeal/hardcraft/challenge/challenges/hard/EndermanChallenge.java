@@ -8,15 +8,22 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 public class EndermanChallenge extends Challenge {
+
+    private final Map<UUID, Integer> tasks = new HashMap<>();
+
     @Override
     public void startChallenge(Player player) {
         if (!isThisChallengeActive(player)) {
             return;
         }
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(HardCraft.getPlugin(), () -> {
+
+        int taskId = Bukkit.getScheduler().scheduleSyncRepeatingTask(HardCraft.getPlugin(), () -> {
             Location playerLoc = player.getLocation();
             World world = playerLoc.getWorld();
             Random rand = new Random();
@@ -26,7 +33,17 @@ public class EndermanChallenge extends Challenge {
             Location teleportLoc = new Location(world, x, y, z);
             player.teleport(teleportLoc);
         }, 0, 20 * 20);
+
+        tasks.put(player.getUniqueId(), taskId);
         super.startChallenge(player);
+    }
+
+    @Override
+    public void stopChallenge(Player player) {
+        Integer taskId = tasks.remove(player.getUniqueId());
+        if (taskId != null) {
+            Bukkit.getScheduler().cancelTask(taskId);
+        }
     }
 
     @Override
