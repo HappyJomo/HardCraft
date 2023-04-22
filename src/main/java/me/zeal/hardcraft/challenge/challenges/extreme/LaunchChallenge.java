@@ -25,10 +25,19 @@ public class LaunchChallenge extends Challenge {
                 Bukkit.getScheduler().cancelTask(tasks.get(player.getUniqueId()));
                 return;
             }
-        player.setVelocity(new Vector(0, 20, 0));
+            player.setVelocity(new Vector(0, 20, 0));
         }, 0, 20 * 20);
-        super.startChallenge(player);
+
         tasks.put(player.getUniqueId(), taskId);
+        super.startChallenge(player);
+    }
+
+    @Override
+    public void stopChallenge(Player player) {
+        Integer taskId = tasks.remove(player.getUniqueId());
+        if (taskId != null) {
+            Bukkit.getScheduler().cancelTask(taskId);
+        }
     }
 
     @Override

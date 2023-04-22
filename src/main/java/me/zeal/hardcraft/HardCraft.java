@@ -8,9 +8,6 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class HardCraft extends JavaPlugin {
-    // TODO: Scoreboard showing active challenge and remaining time.
-    // TODO: Make easier challenges more likely to occur and the other way around.
-    // TODO: Add extra field on the Challenges enums to show difficulty.
 
     private static Plugin plugin;
 

@@ -3,7 +3,6 @@ package me.zeal.hardcraft.challenge.challenges.easy;
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -19,19 +18,22 @@ public class MoonGravityChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
+
         player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, getDuration() * 20, 1, false, false));
         super.startChallenge(player);
     }
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (!isThisChallengeActive(event.getPlayer())) {
+        Player player = event.getPlayer();
+        if (!isThisChallengeActive(player)) {
             return;
         }
-        Player player = event.getPlayer();
+
         if (player.getAllowFlight()) {
             return;
         }
+
         Location startLoc = event.getFrom();
         Location endLoc = event.getTo();
         if (startLoc.getBlockY() <= endLoc.getBlockY()) {
@@ -46,8 +48,10 @@ public class MoonGravityChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
+
         event.setCancelled(true);
     }
+
     @Override
     public Challenges getEnum() {
         return Challenges.MOON_GRAVITY;

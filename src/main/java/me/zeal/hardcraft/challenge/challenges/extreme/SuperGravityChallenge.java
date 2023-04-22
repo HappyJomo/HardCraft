@@ -2,7 +2,6 @@ package me.zeal.hardcraft.challenge.challenges.extreme;
 
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -34,6 +33,7 @@ public class SuperGravityChallenge extends Challenge {
             }
         }
     }
+
     @Override
     public Challenges getEnum() {
         return Challenges.SUPER_GRAVITY;

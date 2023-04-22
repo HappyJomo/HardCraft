@@ -13,7 +13,8 @@ public class NoJumpChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
-        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, getDuration() * 20, 9999, true));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, getDuration() * 20, 128, false, false));
+        super.startChallenge(player);
     }
 
     @Override

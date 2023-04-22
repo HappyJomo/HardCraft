@@ -1,4 +1,4 @@
-package me.zeal.hardcraft.challenge.challenges.normal;
+package me.zeal.hardcraft.challenge.challenges.hard;
 
 import me.zeal.hardcraft.HardCraft;
 import me.zeal.hardcraft.challenge.Challenge;
@@ -28,7 +28,7 @@ public class ShuffleInventoryChallenge extends Challenge {
             ItemStack[] playerInv = player.getInventory().getContents();
             Collections.shuffle(Arrays.asList(playerInv));
             player.getInventory().setContents(playerInv);
-        }, 0, 5 * 20);
+        }, 0, 10 * 20);
 
         tasks.put(player.getUniqueId(), taskId);
         super.startChallenge(player);

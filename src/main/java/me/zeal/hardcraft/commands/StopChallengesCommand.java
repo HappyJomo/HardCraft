@@ -20,18 +20,14 @@ public class StopChallengesCommand implements CommandExecutor {
         ChallengeManager challengeManager = ChallengeManager.getChallengeManager();
         if (cmd.equalsIgnoreCase("stopchallenges")) {
             if (!challengeManager.isStarted()) {
-                player.sendMessage(ChatColor.RED + "no");
+                player.sendMessage(ChatColor.RED + "No challenges are active!");
                 return true;
             }
         }
 
         challengeManager.setStarted(false);
         Bukkit.getScheduler().cancelTask(challengeManager.getTimerId());
-        player.sendMessage("ok we stop");
-
-        for (Player pl : Bukkit.getOnlinePlayers()) {
-
-        }
+        player.sendMessage(ChatColor.GREEN + "Stopping challenges!");
 
         return true;
     }

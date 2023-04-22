@@ -1,4 +1,4 @@
-package me.zeal.hardcraft.challenge.challenges.hard;
+package me.zeal.hardcraft.challenge.challenges.easy;
 
 import me.zeal.hardcraft.challenge.Challenge;
 import me.zeal.hardcraft.challenge.Challenges;
@@ -15,6 +15,7 @@ public class TeleportationChallenge extends Challenge {
         if (!isThisChallengeActive(player)) {
             return;
         }
+
         Location playerLoc = player.getLocation();
         World world = playerLoc.getWorld();
         Random rand = new Random();
@@ -25,6 +26,7 @@ public class TeleportationChallenge extends Challenge {
         player.teleport(teleportLoc);
         super.startChallenge(player);
     }
+
     @Override
     public Challenges getEnum() {
         return Challenges.TELEPORTATION;

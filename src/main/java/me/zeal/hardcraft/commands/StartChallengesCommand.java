@@ -2,7 +2,7 @@ package me.zeal.hardcraft.commands;
 
 import me.zeal.hardcraft.HardCraft;
 import me.zeal.hardcraft.challenge.ChallengeManager;
-import org.bukkit.Bukkit;
+import me.zeal.hardcraft.challenge.challenges.ChallengeTimer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -28,9 +28,8 @@ public class StartChallengesCommand implements CommandExecutor {
 
             challengeManager.setStarted(true);
             player.sendMessage(ChatColor.GREEN + "The challenges are now in action. Watch your step!");
-            challengeManager.setTimerId(Bukkit.getScheduler().scheduleSyncRepeatingTask(HardCraft.getPlugin(), () -> {
-                ChallengeManager.getChallengeManager().assignNewChallenges();
-            }, /*120 * 20*/ 5, /*120 * 20*/ 20 * 20)); // every 2 minutes
+
+            challengeManager.setTimerId(new ChallengeTimer().runTaskTimer(HardCraft.getPlugin(), 0, 1).getTaskId());
         }
         return true;
     }
